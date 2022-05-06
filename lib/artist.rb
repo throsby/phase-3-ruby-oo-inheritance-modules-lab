@@ -1,6 +1,10 @@
 require 'pry'
+require_relative "./modulate"
+
 
 class Artist
+  extend Modulate::ClassMethods
+  include Modulate::InstanceMethods
   attr_accessor :name
   attr_reader :songs
 
@@ -19,13 +23,7 @@ class Artist
     @@artists
   end
 
-  def self.reset_all
-    self.all.clear
-  end
-
-  def self.count
-    self.all.count
-  end
+  
 
   def add_song(song)
     @songs << song
